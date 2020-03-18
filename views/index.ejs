@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= title %></title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="design.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/90c41f30c4.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <%- include('header')%>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+      <div></div>
+      <div class="p-2 mt-2 ">
+        <div class="p-2 mt-2 shadow border text-center rounded-lg">
+          <% if(!error) { %>
+          <div
+            class="my-2 p-2 rounded font-extrabold w-full text-white"
+            id="bg1"
+          >
+            Full URL
+          </div>
+          <form action="" method="post">
+            <div class="p-2 flex mt-2">
+              <input
+                class="p-2 rounded-md focus:outline-none bg-blue-100 w-full
+              font-extrabold"
+                autocomplete="off"
+                type="text"
+                name="url"
+                value="<%= url %>"
+                placeholder="Enter The Full URL"
+              />
+              <input
+                class="p-2 rounded-lg bg-white focus:outline-none text-orange-500 hover:bg-orange-500 hover:text-white"
+                type="submit"
+                value="Shorten"
+              />
+            </div>
+          </form>
+          <% } else { %>
+          <div
+            class="my-2 p-2 rounded font-extrabold w-full text-white"
+            id="bg1"
+          >
+            <%= error %>
+          </div>
+          <div class="p-2 my-2">
+            <a
+              class="p-2 hover:bg-red-400 text-white bg-red-300 m-2 rounded-md"
+              href="/"
+              >Go Back</a
+            >
+          </div>
+          <%}%>
+        </div>
+      </div>
+      <div></div>
+    </div>
+    <% if(urls != ""){ %>
+    <div class="flex justify-center mt-3 p-2">
+      <table class="table-auto">
+        <thead>
+          <tr>
+            <th class="px-4 py-2">Full Url</th>
+            <th class="px-4 py-2">Short Url</th>
+            <th class="px-4 py-2">Created At</th>
+            <th class="px-4 py-2">Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% urls.forEach(url => { %>
+          <tr>
+            <td class="border px-4 py-2">
+              <a href="<%= url.fullUrl %>" target="_blank"><%= url.fullUrl%></a>
+            </td>
+            <td class="border px-4 py-2">
+              <a href="/<%= url.shortUrl %>" target="_blank"
+                ><%= url.shortUrl %></a
+              >
+            </td>
+            <td class="border px-4 py-2">
+              <%= url.createdAt %>
+            </td>
+            <td class="border px-4 py-2 text-center text-red-500">
+              <form method="POST" action="/<%= url.shortUrl %>">
+                <button type="submit" class="focus:outline-none">
+                  <i class="fas fa-trash"></i>
+                </button>
+              </form>
+            </td>
+          </tr>
+          <% })%>
+        </tbody>
+      </table>
+    </div>
+    <% }%>
+  </body>
+</html>

@@ -1,0 +1,36 @@
+{
+  "name": "urlshortner",
+  "version": "1.0.0",
+  "description": "Urlshortner app using Express and MongoDB",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Pranesh-vimal/urlShortner.git"
+  },
+  "keywords": [
+    "urlShortner"
+  ],
+  "author": "Pranesh Palanisamy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Pranesh-vimal/urlShortner/issues"
+  },
+  "homepage": "https://github.com/Pranesh-vimal/urlShortner#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "colors": "^1.4.0",
+    "dotenv": "^8.2.0",
+    "ejs": "^3.0.1",
+    "express": "^4.17.1",
+    "mongoose": "^5.9.5",
+    "morgan": "^1.9.1",
+    "shortid": "^2.2.15",
+    "tailwindcss": "^1.2.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  }
+}
